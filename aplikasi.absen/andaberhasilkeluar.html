@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Logout</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #6A0572, #21867a);
+            background: linear-gradient(135deg,#6A0572, #21867a );
             display: flex;
             height: 100vh;
         }
         .sidebar {
             width: 200px;
-            background: #3E4C47;
+            background: #3e4c47ad;
             color: white;
             padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 15px;
         }
         .sidebar button {
             background: none;
@@ -29,10 +29,12 @@
             text-align: left;
             cursor: pointer;
             font-size: 16px;
+            
         }
         .sidebar button:hover {
             background: #5A6B64;
-            border-radius: 10px;
+            border-radius: 5px;
+            
         }
         .main-content {
             flex: 1;
@@ -43,31 +45,27 @@
             text-align: center;
             position: relative;
         }
-        .logo {
-            width: 100px;
-            height: 20px;
-            background: url('logo.png') no-repeat center;
-            background-size: contain;
-            margin-bottom: 20px;
-        }
-        .buttons {
-            display: grid;
-            height:  250px ;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 50px;
-        }
-        .buttons button {
-            
-            background: #1E3A8A;
+        .logout-box {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
             color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .back-button {
+            margin-top: 20px;
+            background: white;
+            color: black;
             border: none;
-            padding: 15px 20px;
+            padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
             border-radius: 5px;
+            font-weight: bold;
         }
-        .buttons button:hover {
-            background: #122860;
+        .back-button:hover {
+            background: #f0f0f0;
         }
         .footer {
             position: absolute;
@@ -86,16 +84,10 @@
         <button>Keluar</button>
     </div>
     <div class="main-content">
-        <div class="logo"></div>
-        <h1>APPASI</h1>
-        <p>ABSENSI APEL SISWA</p>
-        <div class="buttons">
-            <button>Data Admin</button>
-            <button>Tambah User</button>
-            <button>Tambah Siswa</button>
-            <button>Tentang Aplikasi</button>
-            <button>Masukan</button>
+        <div class="logout-box">
+            Anda berhasil keluar<br>silahkan sign in kembali
         </div>
+        <button class="back-button">Kembali</button>
         <div class="footer">© 2025 Copyright | Kelompok 1</div>
     </div>
 </body>
