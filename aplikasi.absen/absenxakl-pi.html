@@ -32,25 +32,27 @@
         .sidebar h2 {
             text-align: center;
             margin-bottom: 20px;
+            padding: 10px;
+            background: #34495e;
+            border-radius: 5px;
         }
         .sidebar a {
             display: flex;
             align-items: center;
             text-decoration: none;
             color: white;
-            padding: 10px;
+            padding: 15px;
             margin: 5px 0;
+            background: #34495e;
+            border-radius: 5px;
             transition: 0.3s;
         }
         .sidebar a i {
             margin-right: 10px;
         }
         .sidebar a:hover {
-            background:#43A047; /* Warna hijau terang saat hover */
-            border-radius: 5px;
+            background:#43A047;
         }
-       
-        
         .main-content {
             margin-left: 270px;
             flex-grow: 1;
@@ -133,11 +135,12 @@
 <body>
     <nav class="sidebar">
         <h2>menu absen</h2>
-        <a href="#" class="sidebar-link"><i class="fas fa-home"></i> Menu Absen</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-user"></i> Data Absen</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-chart-bar"></i> Data Rekap</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-cog"></i> Pengaturan</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+        <a href="menuutama.html"><i class="fas fa-home"></i> Menu Utama</a>
+        <a href="absenxakl-pa.html"><i class="fas fa-home"></i> Menu Absen</a>
+        <a href="dataabsen.html"><i class="fas fa-user"></i> Data Absen</a>
+        <a href="rekababsen.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
+        <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
+        <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
     </nav>
     
     <div class="main-content">

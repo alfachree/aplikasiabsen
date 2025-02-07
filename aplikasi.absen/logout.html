@@ -99,10 +99,12 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <h2>Menu Absen</h2>
-        <button><i class="fas fa-home"></i> Data Absen</button>
-        <button><i class="fas fa-clipboard-list"></i> Data Rekap</button>
-        <button><i class="fas fa-cog"></i> Pengaturan</button>
-        <button class="logout-btn"><i class="fas fa-sign-out-alt"></i> Keluar</button>
+        <a href="menuutama.html"><i class="fas fa-home"></i> Menu Utama</a>
+        <a href="absenxakl-pa.html"><i class="fas fa-home"></i> Menu Absen</a>
+        <a href="dataabsen.html"><i class="fas fa-user"></i> Data Absen</a>
+        <a href="rekababsen.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
+        <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
+        <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
     </div>
 
     <!-- Main Content -->
@@ -110,8 +112,8 @@
         <div class="modal">
             <h3>Apakah Anda yakin ingin keluar?</h3>
             <div class="buttons">
-                <button class="cancel-btn">Batal</button>
-                <button class="logout-confirm-btn">Keluar</button>
+                <button class="cancel-btn" onclick="window.location.href='menuutama.html'">Batal</button>
+                <button class="logout-confirm-btn" onclick="window.location.href='login.html'">Keluar</button>
             </div>
         </div>
     </div>

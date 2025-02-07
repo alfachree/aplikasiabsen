@@ -90,6 +90,8 @@
             font-size: 16px;
             cursor: pointer;
             border-radius: 5px;
+            width: 100%;
+            height: 100%;
         }
 
         .buttons button:hover {
@@ -107,22 +109,23 @@
 <body>
     <div class="sidebar">
         <h2>pengaturan</h2>
-        <button><i class="fas fa-home"></i> Menu Absen</button>
-        <button><i class="fas fa-users"></i> Data Absen</button>
-        <button><i class="fas fa-chart-bar"></i> Data Rekap</button>
-        <button><i class="fas fa-cog"></i> Pengaturan</button>
-        <button><i class="fas fa-sign-out-alt"></i> Keluar</button>
+        <a href="menuutama.html"><i class="fas fa-home"></i> Menu Utama</a>
+        <a href="absenxakl-pa.html"><i class="fas fa-home"></i> Menu Absen</a>
+        <a href="dataabsen.html"><i class="fas fa-user"></i> Data Absen</a>
+        <a href="rekababsen.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
+        <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
+        <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
     </div>
     <div class="main-content">
         <div class="logo"></div>
         <h1>APPASI</h1>
         <p>ABSENSI APEL SISWA</p>
         <div class="buttons">
-            <button>Data Admin</button>
-            <button>Tambah User</button>
-            <button>Tambah Siswa</button>
-            <button>Tentang Aplikasi</button>
-            <button>Masukan</button>
+            <a href="dataadmin.html"><button>Data Admin</button></a>
+            <a href="tambahuser.html"><button>Tambah User</button></a>
+            <a href="tambahsiswa.html"><button>Tambah Siswa</button></a>
+            <a href="tentangaplikasi.html"><button>Tentang Aplikasi</button></a>
+            <a href="masukan.html"><button>Masukan</button></a>
         </div>
         <div class="footer">© 2025 Copyright | Kelompok 1</div>
     </div>

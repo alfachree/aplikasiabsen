@@ -32,22 +32,26 @@
         .sidebar h2 {
             text-align: center;
             margin-bottom: 20px;
+            padding: 10px;
+            background: #34495e;
+            border-radius: 5px;
         }
         .sidebar a {
             display: flex;
             align-items: center;
             text-decoration: none;
             color: white;
-            padding: 10px;
+            padding: 15px;
             margin: 5px 0;
+            background: #34495e;
+            border-radius: 5px;
             transition: 0.3s;
         }
         .sidebar a i {
             margin-right: 10px;
         }
         .sidebar a:hover {
-            background:#43A047; /* Warna hijau terang saat hover */
-            border-radius: 5px;
+            background:#43A047;
         }
         .main-content {
             margin-left: 270px;
@@ -130,11 +134,12 @@
 <body>
     <nav class="sidebar">
         <h2>menu absen</h2>
-        <a href="#"><i class="fas fa-home"></i> Menu Absen</a>
-        <a href="#"><i class="fas fa-user"></i> Data Absen</a>
-        <a href="#"><i class="fas fa-chart-bar"></i> Data Rekap</a>
-        <a href="#"><i class="fas fa-cog"></i> Pengaturan</a>
-        <a href="#"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+        <a href="menuutama.html"><i class="fas fa-home"></i> Menu Utama</a>
+            <a href="absenxakl-pa.html"><i class="fas fa-home"></i> Menu Absen</a>
+            <a href="dataabsen.html"><i class="fas fa-user"></i> Data Absen</a>
+            <a href="rekababsen.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
+            <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
+            <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
     </nav>
     
     <div class="main-content">
@@ -143,10 +148,19 @@
             <!-- Memindahkan tombol pilih kelas ke sini dan menggantinya dengan dropdown -->
             <div class="kelas-select">
                 <select onchange="changeClass(this.value)">
-                    <option value="X AKL Putra">X AKL Putra</option>
-                    <option value="X AKL Putri">X AKL Putri</option>
-                    <option value="X RPL putra">X TKJ</option>
-                    <option value="X RPL putri">X RPL</option>
+                    <option value="" disabled selected>Pilih Kelas</option>
+                    <option value="X PPLG putra"><a href="x-pplg-putra.html">X PPLG Putra</a></option>
+                    <option value="X PPLG Putri"><a href="x-akl-putri.html">X PPLG Putri</a></option>
+                    <option value="X AKL Putra"><a href="x-akl-putra.html">X AKL Putra</a></option>
+                    <option value="X AKL Putri"><a href="x-akl-putri.html">X AKL Putri</a></option>
+                    <option value="XI PPLG putra"><a href="xi-pplg-putra.html">XI PPLG Putra</a></option>
+                    <option value="XI PPLG putri"><a href="xi-pplg-putra.html">XI PPLG Putri</a></option>
+                    <option value="XI AKL Putra"><a href="xi-akl-putri.html">XI AKL Putra</a></option>
+                    <option value="XI AKL Putri"><a href="xi-akl-putri.html">XI AKL Putri</a></option>
+                    <option value="XII PPLG Putra"><a href="xii-akl-putri.html">XII PPLG Putra</a></option>
+                    <option value="XII PPLG Putri"><a href="xii-akl-putri.html">XII PPLG Putri</a></option>
+                    <option value="XII AKL Putra"><a href="xii-akl-putri.html">XII AKL Putra</a></option>
+                    <option value="XII AKL Putri"><a href="xii-akl-putri.html">XII AKL Putri</a></option>
                 </select>
             </div>
         </div>
@@ -191,12 +205,12 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><input type="checkbox" checked></td>
-                                <td><input type="checkbox" checked></td>
-                                <td><input type="checkbox" checked></td>
-                                <td><input type="checkbox" checked></td>
-                                <td><input type="checkbox" checked></td>
-                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" ></td>
+                                <td><input type="checkbox" ></td>
+                                <td><input type="checkbox" ></td>
+                                <td><input type="checkbox" ></td>
+                                <td><input type="checkbox" ></td>
+                                <td><input type="checkbox" ></td>
                             </tr>
                         </tbody>
                     </table>

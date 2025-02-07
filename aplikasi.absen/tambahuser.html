@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tambah Siswa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #8E24AA, #21867a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    /* Container utama */
+    .dashboard {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(5px);
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Tombol close (X) */
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: white;
+      z-index: 10;
+    }
+    .close-btn:hover {
+      color: red;
+    }
+    /* Header Dashboard */
+    .header {
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    /* Container form */
+    .container {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 20px 30px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      margin: 0 20px 20px;
+    }
+    /* Judul Form */
+    .container h2 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    /* Grup Form (label dan input) */
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #fff;
+      font-weight: bold;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    /* Tombol */
+    .btn-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px; /* Tambahkan jarak antar tombol */
+    margin-top: 15px;
+}
+
+.btn {
+    flex: 1; /* Supaya tombol memiliki ukuran yang sama */
+    padding: 10px;
+    background: #fff;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #ddd;
+}
+    /* Notifikasi */
+    .notification {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #dff0d8;
+      color: #3c763d;
+      border: 1px solid #d6e9c6;
+      border-radius: 5px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard" id="form-container">
+    <button class="close-btn" onclick="tutupForm()">X</button>
+    <div class="header">Dashboard</div>
+    <div class="container">
+      <h2>Tambah User</h2>
+      <form>
+        <div class="form-group">
+          <label for="nama">Nama:</label>
+          <input type="text" id="nama" name="nama" placeholder="Masukkan nama" required>
+        </div>
+        <div class="form-group">
+          <label for="kelas">Kelas:</label>
+          <input type="text" id="kelas" name="kelas" placeholder="Masukkan kelas" required>
+        </div>
+        <div class="form-group">
+          <label for="osis_divisi">Osis Divisi:</label>
+          <input type="text" id="osis_divisi" name="osis_divisi" placeholder="Masukkan osis divisi" required>
+        </div>
+        <div class="btn-container">
+          <a href="pengaturan.html" class="btn">Batal</a>
+          <button type="button" class="btn" onclick="tambahUser()">Simpan</button>
+        </div>
+        <div id="notif" class="notification">User berhasil ditambahkan 👌</div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function tambahUser() {
+      var notif = document.getElementById("notif");
+      notif.style.display = "block";
+      setTimeout(function() {
+        notif.style.display = "none";
+      }, 2000);
+    }
+
+    function tutupForm() {
+      var formContainer = document.getElementById("form-container");
+      formContainer.style.display = "none";
+    }
+  </script>
+</body>
+</html>
