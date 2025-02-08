@@ -13,7 +13,47 @@
             display: flex;
             height: 100vh;
         }
-
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+        }
+        
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #34495e;
+            border-radius: 5px;
+        }
+        
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+            padding: 15px;
+            margin: 5px 0;
+            background: #34495e;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        
+        .sidebar a i {
+            margin-right: 10px;
+        }
+        
+        .sidebar a:hover {
+            background:#43A047;
+        }
        
 
         .main-content {
@@ -68,12 +108,12 @@
 </head>
 <body>
     <div class="sidebar">
-        <h2>pengaturan</h2>
+        <h2>Pengaturan</h2>
         <a href="menuutama.html"><i class="fas fa-home"></i> Menu Utama</a>
-        <a href="dataabsen.html"><i class="fas fa-user"></i> Data Absen</a>
-        <a href="rekababsen.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
-        <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
-        <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+            <a href="dataabsen.html"><i class="fas fa-user"></i> Data Absen</a>
+            <a href="datarekap.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
+            <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
+            <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
     </div>
     <div class="main-content">
         <div class="logo"></div>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Konfirmasi Logout</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -17,34 +17,48 @@
             height: 100vh;
             background: linear-gradient(135deg, #8E24AA,#21867a);
         }
+        
         .sidebar {
-            width: 20%;
-            background: #222;
+            width: 250px;
+            background: #2c3e50;
             color: white;
-            padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            padding: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
         }
+        
         .sidebar h2 {
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-        .sidebar button {
-            background: none;
-            color: white;
-            border: none;
+            text-align: center;
+            margin-bottom: 20px;
             padding: 10px;
-            text-align: left;
-            font-size: 16px;
-            cursor: pointer;
+            background: #34495e;
+            border-radius: 5px;
+        }
+        
+        .sidebar a {
             display: flex;
             align-items: center;
-            gap: 10px;
+            text-decoration: none;
+            color: white;
+            padding: 15px;
+            margin: 5px 0;
+            background: #34495e;
+            border-radius: 5px;
+            transition: 0.3s;
         }
-        .sidebar button:hover {
-            color: #bbb;
+        
+        .sidebar a i {
+            margin-right: 10px;
         }
+        
+        .sidebar a:hover {
+            background:#43A047;
+        }
+        
         .logout-btn {
             background: #444;
             padding: 10px;
@@ -101,7 +115,7 @@
         <h2>Menu Absen</h2>
         <a href="menuutama.html"><i class="fas fa-home"></i> Menu Utama</a>
         <a href="dataabsen.html"><i class="fas fa-user"></i> Data Absen</a>
-        <a href="rekababsen.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
+        <a href="datarekap.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
         <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
         <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
     </div>

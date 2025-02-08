@@ -22,6 +22,7 @@
 .sidebar a {
     display: flex;
     align-items: center;
+    gap: 10px;
     text-decoration: none;
     color: white;
     padding: 15px;
@@ -38,6 +39,7 @@
 .sidebar a:hover {
     background:#43A047;
 }
+
 
 * {
     margin: 0;
@@ -57,7 +59,7 @@ body {
     display: flex;
 }
 
-/* Sidebar */
+
 
 
 /* Konten Utama */
