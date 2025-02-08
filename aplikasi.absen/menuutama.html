@@ -3,124 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <title>Menu Utama</title>
     <style>
         /* Reset dan Styling Dasar */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #8E24AA, #21867a); /* Hijau ke ungu */
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff; /* Warna teks putih */
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            height: 90%;
-            background-color: rgba(255, 255, 255, 0.247); /* Putih transparan */
-            display: flex;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.096);
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 250px;
-            background-color: #2c3e50; /* Warna gelap seperti sebelumnya */
-            color: white;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            position: fixed;
-            left: 0;
-            top: 0;
-            height: 100vh;
-        }
-
-        .sidebar h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .sidebar a {
-            text-decoration: none;
-            color: white;
-            padding: 10px 15px;
-            margin-bottom: 10px;
-            background-color: #34495e; /* Warna hover abu-abu */
-            border-radius: 5px;
-            display: block;
-            font-size: 16px;
-            text-decoration: none;
-        }
-
-        .sidebar a:hover {
-            background-color: #43A047; /* Warna hijau terang saat hover */
-        }
-
-        .sidebar a i {
-            margin-right: 10px;
-        }
-
-        /* Konten Utama */
-        .main-content {
-            margin-left: 270px; /* Menambahkan jarak untuk sidebar */
-            flex: 1;
-            padding: 20px;
-            position: relative;
-        }
-
-        .main-content h1 {
-            font-size: 28px;
-            color: #4A148C; /* Ungu tua */
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .info-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .info-card {
-            width: 45%;
-            background-color: rgba(255, 255, 255, 0.9); /* Putih transparan */
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            color: #333;
-        }
-
-        .info-card h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .info-card p {
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        /* Footer */
-        .footer {
-            position: absolute;
-            bottom: 10px;
-            left: 20px;
-            font-size: 14px;
-            color: rgba(0, 0, 0, 0.6);
-        }
+        
     </style>
 </head>
 <body>
@@ -129,7 +17,7 @@
         <div class="sidebar">
             <h2>Menu Utama</h2>
             <a href="menuutama.html"><i class="fas fa-home"></i> Menu Utama</a>
-            <a href="absenxakl-pa.html"><i class="fas fa-home"></i> Menu Absen</a>
+            <a href="x-akl-putra.html"><i class="fas fa-home"></i> Menu Absen</a>
             <a href="dataabsen.html"><i class="fas fa-user"></i> Data Absen</a>
             <a href="rekababsen.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
             <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
@@ -140,12 +28,10 @@
         <div class="main-content">
             <h1>Menu Utama</h1>
             <div class="info-box">
-                <!-- Kartu Panduan -->
                 <div class="info-card">
                     <h3>Panduan Penggunaan Aplikasi</h3>
                     <a href="https://alfachree.github.io/Appasi/">Klik di sini</a>
                 </div>
-                <!-- Kartu Informasi -->
                 <div class="info-card">
                     <h3>Aplikasi ini dibuat untuk mempermudah</h3>
                     <p>
