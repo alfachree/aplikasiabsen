@@ -23,51 +23,104 @@
             min-height: 100vh;
         }
 
+        /* SIDEBAR */
         .sidebar {
             width: 250px;
-            background: #2c3e50;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
             position: fixed;
-            left: 0;
             top: 0;
+            left: -250px;
             height: 100vh;
+            background: #34495e;
+            color: white;
+            transition: left 0.3s ease-in-out;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 1001;
+            padding-top: 20px;
         }
 
-        .sidebar h2 {
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
             text-align: center;
+        }
+
+        .sidebar-header h2 {
+            font-size: 24px;
             margin-bottom: 20px;
-            padding: 10px;
-            background: #34495e;
-            border-radius: 5px;
         }
 
         .sidebar a {
             display: flex;
             align-items: center;
+            gap: 10px;
             text-decoration: none;
             color: white;
-            padding: 15px;
-            margin: 5px 0;
-            background: #34495e;
-            border-radius: 5px;
-            transition: 0.3s;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: background 0.3s ease, transform 0.2s;
+            margin-bottom: 10px;
         }
 
         .sidebar a i {
-            margin-right: 10px;
+            width: 20px;
+            text-align: center;
         }
 
         .sidebar a:hover {
-            background:#43A047;
+            background: #2ecc71;
+            transform: scale(1.05);
+        }
+
+        /* OVERLAY */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s;
+            z-index: 1000;
+        }
+
+        .overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* TOGGLE BUTTON (HAMBURGER ICON) */
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 1002;
+            transition: transform 0.3s ease, left 0.3s;
+        }
+
+        .toggle-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .toggle-btn.inside {
+            left: 210px;
         }
 
         .main-content {
             flex: 1;
             padding: 20px;
-            margin-left: 250px;
+            margin-left: 0px;
             display: flex;
             flex-direction: column;
             background-color: #e8f5e99c;
@@ -75,13 +128,40 @@
             overflow: hidden;
         }
 
-        .table-container {
-            background: #ffffff73;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            padding: 20px;
-        }
+        /* Membuat table container menjadi responsive dan fullscreen */
+.table-container {
+    background: #ffffff73;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    overflow-x: auto; /* Membuat kontainer bisa scroll horizontal jika konten lebih lebar */
+    width: 100%; /* Pastikan kontainer memenuhi lebar layar */
+    height: 100vh; /* Mengatur container agar memenuhi tinggi layar */
+    box-sizing: border-box; /* Agar padding dan border ikut dihitung dalam lebar */
+}
+
+/* Membuat tabel responsive */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Membantu tabel menyesuaikan ukuran kolom */
+}
+
+/* Menangani responsivitas di perangkat mobile */
+@media (max-width: 768px) {
+    .table-container {
+        padding: 10px; /* Mengurangi padding pada perangkat kecil */
+        height: auto; /* Menyesuaikan tinggi kontainer agar lebih fleksibel */
+    }
+    table {
+        width: 100%; /* Tabel akan memenuhi lebar kontainer */
+        overflow-x: auto; /* Mengaktifkan scroll horizontal jika tabel terlalu lebar */
+    }
+    .info {
+        font-size: 16px; /* Menyesuaikan ukuran teks pada perangkat kecil */
+    }
+}
 
         table {
             width: 100%;
@@ -116,28 +196,39 @@
             text-align: center;
         }
 
-        .footer {
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            text-align: center;
-            padding: 12px 0;
-            font-size: 14px;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-        }
+        /* Styling footer yang akan tetap berada di bawah */
+.footer {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 14px;
+    position: relative;
+    margin-top: auto; /* Menjaga footer berada di bawah konten */
+}
     </style>
 </head>
 <body>
-    <nav class="sidebar">
-        <h2>Data Rekap</h2>
+    <!-- SIDEBAR -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Data Rekap</h2>
+        </div>
         <a href="menuutama.html"><i class="fas fa-home"></i> Menu Utama</a>
         <a href="dataabsen.html"><i class="fas fa-user"></i> Data Absen</a>
         <a href="datarekap.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
         <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
         <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
     </nav>
+    
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- TOGGLE BUTTON (HAMBURGER ICON) -->
+    <button class="toggle-btn" id="toggle-btn">
+        <i class="fa-solid fa-bars"></i>
+    </button>
 
     <div class="main-content">
         <div class="table-container">
@@ -162,6 +253,30 @@
         <div class="info">"Anda dapat melihat data rekap per siswa dengan cara mengklik nama pada halaman ini"</div>
     </div>
 
-    <div class="footer">© 2025 Copyright | Kelompok 1</div>
+    <div class="footer">
+        © 2025 Copyright | Kelompok 1
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const toggleBtn = document.getElementById('toggle-btn');
+
+        function toggleSidebar() {
+            if (sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                toggleBtn.classList.remove('inside');
+            } else {
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+                toggleBtn.classList.add('inside');
+            }
+        }
+
+        toggleBtn.addEventListener('click', toggleSidebar);
+        overlay.addEventListener('click', toggleSidebar);
+    </script>
 </body>
 </html>

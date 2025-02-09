@@ -1,134 +1,237 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #6A0572, #21867a);
-            display: flex;
-            height: 100vh;
-        }
-        .sidebar {
-            width: 250px;
-            background: #2c3e50;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            position: fixed;
-            left: 0;
-            top: 0;
-            height: 100vh;
-        }
-        
-        .sidebar h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 10px;
-            background: #34495e;
-            border-radius: 5px;
-        }
-        
-        .sidebar a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: white;
-            padding: 15px;
-            margin: 5px 0;
-            background: #34495e;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-        
-        .sidebar a i {
-            margin-right: 10px;
-        }
-        
-        .sidebar a:hover {
-            background:#43A047;
-        }
-       
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pengaturan</title>
+  <style>
+    /* Reset & Pengaturan Dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #6A0572, #21867a);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-        .main-content {
-            margin-left: 270px; /* Memberikan ruang untuk sidebar */
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
-            position: relative;
-        }
+    /* SIDEBAR */
+    .sidebar {
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: -250px; /* Tersembunyi di awal */
+      height: 100vh;
+      background: #34495e;
+      color: white;
+      transition: left 0.3s ease-in-out;
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+      z-index: 1001;
+    }
+    .sidebar.active {
+      left: 0;
+    }
+    .sidebar-header {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+    }
+    .sidebar-header h2 {
+      font-size: 22px;
+    }
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      transition: background 0.3s ease, transform 0.2s;
+      margin-bottom: 5px;
+    }
+    .sidebar a i {
+      width: 20px;
+      text-align: center;
+    }
+    .sidebar a:hover {
+      background: #2ecc71;
+      transform: scale(1.05);
+    }
 
-        .logo {
-            width: 100px;
-            height: 20px;
-            background: url('logo.png') no-repeat center;
-            background-size: contain;
-            margin-bottom: 20px;
-        }
+    /* OVERLAY */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease, visibility 0.3s;
+      z-index: 1000;
+    }
+    .overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
 
-        .buttons {
-            display: grid;
-            height: 250px;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 50px;
-        }
+    /* TOGGLE BUTTON (HAMBURGER ICON) */
+.toggle-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 1002;
+  transition: transform 0.3s ease, left 0.3s;
+}
+.toggle-btn:hover {
+  transform: scale(1.2);
+}
 
-        .buttons button {
-            background: #1E3A8A;
-            color: white;
-            border: none;
-            padding: 15px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            width: 100%;
-            height: 100%;
-        }
+/* Saat sidebar terbuka, ubah posisi tombol agar tampak berada di dalam header sidebar */
+.toggle-btn.inside {
+  left: 210px; /* 250px - 40px offset */
+}
 
-        .buttons button:hover {
-            background: #122860;
-        }
+    /* MAIN CONTENT */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 60px; /* Ruang untuk footer */
+      width: 100%;
+      padding-top: 50px;
+    }
+    .logo {
+      width: 400px;
+      height: 400px;
+      background: url('images/logo.png') no-repeat center;
+      background-size: contain;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px;
+      height: 250px;
+      margin-top: 20px;
+    }
+    .buttons a {
+      text-decoration: none;
+    }
+    .buttons button {
+      background: #1E3A8A;
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100%;
+      height: 100%;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+    .buttons button:hover {
+      background: #122860;
+      transform: scale(1.05);
+    }
 
-        .footer {
-            position: absolute;
-            bottom: 10px;
-            font-size: 12px;
-            color: white;
-        }
-    </style>
+    /* FOOTER */
+    .footer {
+      width: 100%;
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      position: relative;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Pengaturan</h2>
-        <a href="menuutama.html"><i class="fas fa-home"></i> Menu Utama</a>
-            <a href="dataabsen.html"><i class="fas fa-user"></i> Data Absen</a>
-            <a href="datarekap.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
-            <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
-            <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>Data Absen</h2>
     </div>
-    <div class="main-content">
-        <div class="logo"></div>
-        <h1>APPASI</h1>
-        <p>ABSENSI APEL SISWA</p>
-        <div class="buttons">
-            <a href="dataadmin.html"><button>Data Admin</button></a>
-            <a href="tambahuser.html"><button>Tambah User</button></a>
-            <a href="tambahsiswa.html"><button>Tambah Siswa</button></a>
-            <a href="masukan.html"><button>Masukan</button></a>
-        </div>
-        <div class="footer">© 2025 Copyright | Kelompok 1</div>
-    </div>
+    <a href="menuutama.html"><i class="fas fa-home"></i> Menu Utama</a>
+    <a href="dataabsen.html"><i class="fas fa-user"></i> Data Absen</a>
+    <a href="datarekap.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
+    <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
+    <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+  </nav>
 
-    <!-- Menambahkan ikon FontAwesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+  <!-- OVERLAY -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- TOGGLE BUTTON -->
+  <button class="toggle-btn" id="toggle-btn">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <div class="logo"></div>
+    <div class="buttons">
+      <a href="dataadmin.html"><button>Data Admin</button></a>
+      <a href="tambahuser.html"><button>Tambah User</button></a>
+      <a href="tambahsiswa.html"><button>Tambah Siswa</button></a>
+      <a href="masukan.html"><button>Masukan</button></a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2025 Copyright | Kelompok 1
+  </footer>
+
+  <!-- SCRIPT UNTUK TOGGLE SIDEBAR -->
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const toggleBtn = document.getElementById('toggle-btn');
+
+    function toggleSidebar() {
+      if (sidebar.classList.contains('active')) {
+        // Tutup sidebar
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        toggleBtn.classList.remove('inside');
+      } else {
+        // Buka sidebar
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+        toggleBtn.classList.add('inside');
+      }
+    }
+
+    toggleBtn.addEventListener('click', toggleSidebar);
+    overlay.addEventListener('click', toggleSidebar);
+  </script>
+
+  <!-- Menambahkan ikon FontAwesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
 </body>
 </html>
