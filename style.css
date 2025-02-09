@@ -65,7 +65,9 @@ body {
 /* Konten Utama */
 .main-content {
     flex-grow: 1;
-    margin-left: 250px;
+    margin-left: 25px;
+    margin-top: 1px;
+    margin-bottom: 0px;
     padding: 20px;
     color: white;
     display: flex;
@@ -102,14 +104,14 @@ body {
     line-height: 1.5;
 }
 
-/* Footer */
-.footer {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    text-align: center;
-    padding: 12px 0;
-    font-size: 14px;
-    position: relative;
-    bottom: 0;
-  }
+        /* Styling footer yang akan tetap berada di bawah */
+        .footer {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+            padding: 12px 0;
+            font-size: 14px;
+            position: relative;
+            margin-top: auto; /* Menjaga footer berada di bawah konten */
+        }

@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>Menu Utama</title>
-    <style>
-        /* SIDEBAR */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Link FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <title>Menu Utama</title>
+  <style>
+    /* Global Styles */
+    body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #6A0572, #21867a);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+    
+    /* SIDEBAR */
     .sidebar {
       width: 250px;
       position: fixed;
       top: 0;
-      left: -250px; /* Tersembunyi di luar layar awalnya */
+      left: -250px; /* Tersembunyi secara default */
       height: 100vh;
       background: #34495e;
       color: white;
@@ -29,10 +39,11 @@
       padding: 20px;
       display: flex;
       align-items: center;
-      /* Karena tombol silang dihilangkan, hanya judul yang ditampilkan */
+      justify-content: center;
     }
     .sidebar-header h2 {
       font-size: 22px;
+      margin: 0;
     }
     .sidebar a {
       display: flex;
@@ -53,7 +64,7 @@
       background: #2ecc71;
       transform: scale(1.05);
     }
-
+    
     /* OVERLAY */
     .overlay {
       position: fixed;
@@ -71,33 +82,97 @@
       visibility: visible;
       opacity: 1;
     }
-
-    /* TOGGLE BUTTON (HAMBURGER ICON) */
+    
+    /* MAIN HEADER (untuk judul Menu Utama dan ikon hamburger) */
+    .main-header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background-color: #e8f5e9;
+    }
+    .main-header h1 {
+      margin: 0;
+      margin-left: 10px;
+      font-size: 24px;
+      color: #37474F;
+    }
     .toggle-btn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
       background: none;
       border: none;
-      color: white;
+      color: #37474F;
       cursor: pointer;
-      font-size: 20px;
-      z-index: 1002;
-      transition: transform 0.3s ease, left 0.3s;
+      font-size: 24px;
+      /* Tidak lagi menggunakan positioning fixed agar tetap inline dengan header */
     }
     .toggle-btn:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
-    /* Saat sidebar terbuka, ubah posisi tombol agar tampak berada di dalam header sidebar */
-    .toggle-btn.inside {
-      left: 210px; /* 250px (lebar sidebar) - 40px offset */
+    
+    /* MAIN CONTENT */
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      /* Pada tampilan desktop, sidebar akan overlay sehingga margin-left tidak digunakan */
+      background-color: linear-gradient(135deg, #6A0572, #21867a);
+      box-sizing: border-box;
     }
-
-        
-    </style>
+    
+    /* INFO BOX & INFO CARD */
+    .info-box {
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .info-card {
+      background-color: white;
+      padding: 15px;
+      border-radius: 8px;
+      flex: 1;
+      min-width: 250px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    .info-card h3 {
+      font-size: 18px;
+      margin-top: 0;
+    }
+    
+    /* FOOTER */
+    .footer {
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      text-align: center;
+      padding: 12px 0;
+      font-size: 14px;
+      position: relative;
+      margin-top: auto;
+    }
+    
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 200px;
+        left: -200px;
+      }
+      .sidebar.active {
+        left: 0;
+      }
+      .main-header {
+        padding: 15px;
+      }
+      .main-header h1 {
+        font-size: 20px;
+      }
+      .info-box {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- SIDEBAR -->
+  <!-- SIDEBAR -->
   <nav class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <h2>Data Absen</h2>
@@ -108,68 +183,63 @@
     <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
     <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
   </nav>
-<!-- OVERLAY -->
-<div class="overlay" id="overlay"></div>
-
-<!-- TOGGLE BUTTON (HAMBURGER ICON) -->
-<button class="toggle-btn" id="toggle-btn">
-  <i class="fa-solid fa-bars"></i>
-</button>
-        <!-- Konten Utama -->
-        <div class="main-content">
-            <h1>Menu Utama</h1>
-            <div class="info-box">
-                <div class="info-card">
-                    <h3>Panduan Penggunaan Aplikasi</h3>
-                    <a href="https://alfachree.github.io/Appasi/">Klik di sini</a>
-                </div>
-                <div class="info-card">
-                    <h3>Aplikasi ini dibuat untuk mempermudah</h3>
-                    <p>
-                        "Aplikasi ini dibuat untuk mempermudah guru dan OSIS untuk
-                        mengabsen, merekap, menyimpan data dari absen dan rekap
-                        dengan aman dan efisien."
-                    </p>
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="footer">
-                © 2025 Copyright | Kelompok 1
-            </div>
-             <!-- SCRIPT -->
+  
+  <!-- OVERLAY -->
+  <div class="overlay" id="overlay"></div>
+  
+  <!-- MAIN HEADER -->
+  <header class="main-header">
+    <button class="toggle-btn" id="toggle-btn">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <h1>Menu Utama</h1>
+  </header>
+  
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <div class="info-box">
+      <div class="info-card">
+        <h3>Panduan Penggunaan Aplikasi</h3>
+        <a href="https://alfachree.github.io/Appasi/">Klik di sini</a>
+      </div>
+      <div class="info-card">
+        <h3>Aplikasi ini dibuat untuk mempermudah</h3>
+        <p>
+          "Aplikasi ini dibuat untuk mempermudah guru dan OSIS untuk
+          mengabsen, merekap, menyimpan data dari absen dan rekap
+          dengan aman dan efisien."
+        </p>
+      </div>
+    </div>
+    
+    <!-- FOOTER -->
+    <div class="footer">
+      © 2025 Copyright | Kelompok 1
+    </div>
+  </div>
+  
+  <!-- SCRIPT -->
   <script>
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
     const toggleBtn = document.getElementById('toggle-btn');
-
-    // Fungsi toggle untuk membuka/menutup sidebar dan memindahkan posisi tombol
+    
+    // Fungsi untuk membuka/tutup sidebar
     function toggleSidebar() {
       if (sidebar.classList.contains('active')) {
-        // Jika sidebar terbuka, tutup dan kembalikan tombol ke pojok kiri atas (posisi awal)
         sidebar.classList.remove('active');
         overlay.classList.remove('active');
-        toggleBtn.classList.remove('inside');
       } else {
-        // Jika sidebar tertutup, buka sidebar dan pindahkan tombol ke dalam header sidebar
         sidebar.classList.add('active');
         overlay.classList.add('active');
-        toggleBtn.classList.add('inside');
       }
     }
-
+    
     toggleBtn.addEventListener('click', toggleSidebar);
     overlay.addEventListener('click', toggleSidebar);
   </script>
-        </div>
-    </div>
-
-    <!-- Menambahkan ikon FontAwesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
-    <script>
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('open');
-        }
-    </script>
+  
+  <!-- FontAwesome JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
 </body>
 </html>
