@@ -19,6 +19,8 @@
             background: linear-gradient(135deg, #6A0572, #21867a);
             color: #fff;
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .sidebar {
@@ -68,7 +70,6 @@
             margin-left: 250px;
             display: flex;
             flex-direction: column;
-            position: relative;
             background-color: #e8f5e99c;
             border-radius: 10px;
             overflow: hidden;
@@ -116,12 +117,15 @@
         }
 
         .footer {
-            position: absolute;
-            bottom: 10px;
-            font-size: 12px;
-            color: white;
-            text-align: center;
             width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+            padding: 12px 0;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
         }
     </style>
 </head>
@@ -129,10 +133,10 @@
     <nav class="sidebar">
         <h2>Data Rekap</h2>
         <a href="menuutama.html"><i class="fas fa-home"></i> Menu Utama</a>
-            <a href="dataabsen.html"><i class="fas fa-user"></i> Data Absen</a>
-            <a href="datarekap.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
-            <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
-            <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+        <a href="dataabsen.html"><i class="fas fa-user"></i> Data Absen</a>
+        <a href="datarekap.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
+        <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
+        <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
     </nav>
 
     <div class="main-content">
