@@ -11,7 +11,7 @@
     body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #6A0572, #21867a);
-            color: #fff;
+            color: #0f0d0d;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -101,12 +101,33 @@
       border: none;
       color: #37474F;
       cursor: pointer;
-      font-size: 24px;
+      font-size: 2opx;
       /* Tidak lagi menggunakan positioning fixed agar tetap inline dengan header */
     }
     .toggle-btn:hover {
       transform: scale(1.1);
-    }
+    }/* TOGGLE BUTTON (HAMBURGER ICON) */
+    .toggle-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 1002;
+            transition: transform 0.3s ease, left 0.3s;
+        }
+
+        .toggle-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .toggle-btn.inside {
+            left: 210px;
+        }
+
     
     /* MAIN CONTENT */
     .main-content {
