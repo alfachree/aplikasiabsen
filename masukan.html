@@ -96,9 +96,9 @@
             height: 150px;
             border-radius: 5px;
             border: 1px solid #ccc;
-            padding: 12px;
+            padding: 0px;
             resize: none;
-            margin-bottom: 15px;
+            margin-bottom: 50px;
             font-size: 14px;
             color: #333;
         }
@@ -118,6 +118,37 @@
         .popup .submit button:hover {
             background: #405D44;
         }
+        .form-controls {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            bottom: 50px;
+            left: 20px;
+            right: 20px;
+        }
+
+        .form-controls a {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-btn {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .back-btn:hover {
+            background-color: #bbb;
+            transform: scale(1.05);
+        }
+
         .footer {
       width: 100%;
       background-color: rgba(0, 0, 0, 0.7);
@@ -125,33 +156,25 @@
       text-align: center;
       padding: 12px 0;
       font-size: 14px;
-      position: relative;
+      position: fixed;
       bottom: 0;
     }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h1>pengaturan</h1>
-        <a href="menuutama.html"><i class="fas fa-home"></i> Menu Utama</a>
-            <a href="absenxakl-pa.html"><i class="fas fa-home"></i> Menu Absen</a>
-            <a href="dataabsen.html"><i class="fas fa-user"></i> Data Absen</a>
-            <a href="rekababsen.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
-            <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
-            <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
-    </div>
-    
     <div class="content">
         <div class="popup" id="popup">
-            <span class="close" onclick="closePopup()">&times;</span>
             <h2>Beri kami Masukan Dong...</h2>
             <label for="feedback">Tulis Disini :</label>
-            <textarea id="feedback" placeholder="Masukkan masukan atau saran Anda di sini..."></textarea>
+            <textarea id="feedback" placeholder="Beri masukan atau saran Anda di sini..."></textarea>
             <div class="submit">
                 <button onclick="submitFeedback()">✔ Kirim</button>
             </div>
         </div>
     </div>
+    <div class="form-controls">
+        <a href="datarekap.html" class="back-btn">Kembali</a>
+        </div>
     
     <div class="footer">&copy; 2025 Kelompok 1</div>
     
@@ -164,12 +187,12 @@
             const feedback = document.getElementById('feedback').value;
             if (feedback) {
                 alert("Terima kasih atas masukan Anda!");
-                document.getElementById('popup').style.display = 'none';
                 document.getElementById('feedback').value = ''; // Reset textarea
             } else {
                 alert("Masukkan feedback sebelum mengirim.");
             }
         }
+    </script>
     </script>
 </body>
 </html>

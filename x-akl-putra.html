@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,11 +13,13 @@
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
+
         body {
             display: flex;
             height: 100vh;
             background: linear-gradient(135deg, #6A0572, #21867a);
         }
+
         .sidebar {
             width: 250px;
             background: #2c3e50;
@@ -29,6 +32,7 @@
             top: 0;
             height: 100vh;
         }
+
         .sidebar h2 {
             text-align: center;
             margin-bottom: 20px;
@@ -36,6 +40,7 @@
             background: #34495e;
             border-radius: 5px;
         }
+
         .sidebar a {
             display: flex;
             align-items: center;
@@ -47,12 +52,15 @@
             border-radius: 5px;
             transition: 0.3s;
         }
+
         .sidebar a i {
             margin-right: 10px;
         }
+
         .sidebar a:hover {
-            background:#43A047;
+            background: #43A047;
         }
+
         .main-content {
             margin-left: 270px;
             flex-grow: 1;
@@ -60,6 +68,7 @@
             flex-direction: column;
             padding: 20px;
         }
+
         .header {
             background: #34495e;
             color: white;
@@ -70,6 +79,7 @@
             font-size: 16px;
             border-radius: 5px;
         }
+
         /* Dropdown Style */
         .kelas-select select {
             padding: 6px 10px;
@@ -82,6 +92,7 @@
             margin-left: 10px;
             width: 150px;
         }
+
         .kelas-select select:hover {
             background-color: #43A047;
         }
@@ -92,10 +103,12 @@
             flex-direction: column;
             gap: 20px;
         }
+
         .table-container {
             display: flex;
             gap: 20px;
         }
+
         .table {
             flex: 1;
             background: white;
@@ -103,6 +116,7 @@
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .table-header {
             background: #6A0572;
             color: white;
@@ -111,36 +125,118 @@
             font-size: 18px;
             border-radius: 5px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 10px;
             text-align: center;
         }
+
         th {
             background: #43A047;
             color: white;
         }
+
         td input[type="checkbox"] {
             width: 18px;
             height: 18px;
         }
+
+        /* FORM CONTROLS: Tombol Kembali & Submit */
+        .form-controls {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+        }
+
+        .form-controls a {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-btn {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .back-btn:hover {
+            background-color: #bbb;
+            transform: scale(1.05);
+        }
+
+        .submit-btn {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .submit-btn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .header,
+        .table-container {
+            margin-left: -100px;
+            margin-right: -100px;
+            width: calc(100% + 100px);
+        }
+
+
+        /* RESPONSIVE DESIGN */
+        @media screen and (max-width: 768px) {
+            .main-header,
+            .main-content {
+                margin-left: 0;
+                padding: 15px;
+            }
+
+            .sidebar {
+                width: 200px;
+                left: -200px;
+            }
+
+            .sidebar.active {
+                left: 0;
+            }
+
+            .toggle-btn.inside {
+                left: 160px;
+            }
+
+            .info-box {
+                flex-direction: column;
+            }
+
+            .form-controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .form-controls button {
+                width: 100%;
+            }
+        }
     </style>
 </head>
+
 <body>
-    <nav class="sidebar">
-        <h2>Menu Absen</h2>
-        <a href="menuutama.html"><i class="fas fa-home"></i> Menu Utama</a>
-            <a href="dataabsen.html"><i class="fas fa-user"></i> Data Absen</a>
-            <a href="rekababsen.html"><i class="fas fa-chart-bar"></i> Data Rekap</a>
-            <a href="pengaturan.html"><i class="fas fa-cog"></i> Pengaturan</a>
-            <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
-    </nav>
-    
     <div class="main-content">
         <div class="header">
             <div>kelas <b><span id="current-class">X AKL Putra</span></b> 👋</div>
@@ -148,73 +244,82 @@
             <div class="kelas-select">
                 <select onchange="changeClass(this.value)">
                     <option value="" disabled selected>Pilih Kelas</option>
-                    <option value="X PPLG putra"><a href="x-pplg-putra.html">X PPLG Putra</a></option>
-                    <option value="X PPLG Putri"><a href="x-pplg-putri.html">X PPLG Putri</a></option>
-                    <option value="X AKL Putra"><a href="x-akl-putra.html">X AKL Putra</a></option>
-                    <option value="X AKL Putri"><a href="x-akl-putri.html">X AKL Putri</a></option>
-                    <option value="XI RPL putra"><a href="xi-rpl-putra.html">XI RPL putra</a></option>
-                    <option value="XI RPL putri"><a href="xi-rpl-putra.html">XI RPL putri</a></option>
-                    <option value="XI LPS Putra"><a href="xi-lps-putri.html">XI LPS Putra</a></option>
-                    <option value="XI LPS Putri"><a href="xi-lps-putri.html">XI LPS Putri</a></option>
-                    <option value="XII RPL Putra"><a href="xii-rpl-putri.html">XII RPL Putra</a></option>
-                    <option value="XII RPL Putri"><a href="xii-rpl-putri.html">XII RPL Putri</a></option>
-                    <option value="XII PBS Putra"><a href="xii-pbs-putri.html">XII PBS Putra</a></option>
-                    <option value="XII PBS Putri"><a href="xii-pbs-putri.html">XII PBS Putri</a></option>
+                    <option value="X PPLG Putra">X PPLG Putra</option>
+                    <option value="X PPLG Putri">X PPLG Putri</option>
+                    <option value="X AKL Putra">X AKL Putra</option>
+                    <option value="X AKL Putri">X AKL Putri</option>
+                    <option value="XI RPL Putra">XI RPL Putra</option>
+                    <option value="XI RPL Putri">XI RPL Putri</option>
+                    <option value="XI LPS Putra">XI LPS Putra</option>
+                    <option value="XI LPS Putri">XI LPS Putri</option>
+                    <option value="XII RPL Putra">XII RPL Putra</option>
+                    <option value="XII RPL Putri">XII RPL Putri</option>
+                    <option value="XII PBS Putra">XII PBS Putra</option>
+                    <option value="XII PBS Putri">XII PBS Putri</option>
                 </select>
             </div>
         </div>
 
         <div class="dashboard">
             <div class="table-container">
-                <div class="table">
-                    <div class="table-header">Kehadiran</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Hadir</th>
-                                <th>Tanpa Ket</th>
-                                <th>Izin</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>asep</td>
-                                <td><input type="checkbox"></td>
-                                <td><input type="checkbox"></td>
-                                <td><input type="checkbox"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="table">
-                    <div class="table-header">Kelengkapan Atribut</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Kaos Kaki</th>
-                                <th>Sabuk</th>
-                                <th>Seragam</th>
-                                <th>Songkok</th>
-                                <th>Sepatu</th>
-                                <th>Hasduk</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="checkbox" ></td>
-                                <td><input type="checkbox" ></td>
-                                <td><input type="checkbox" ></td>
-                                <td><input type="checkbox" ></td>
-                                <td><input type="checkbox" ></td>
-                                <td><input type="checkbox" ></td>
-                            </tr>
+            <div class="table">
+                <div class="table-header">Kehadiran</div>
+                <table>
+                <thead>
+                    <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Hadir</th>
+                    <th>Tanpa Ket</th>
+                    <th>Izin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>1</td>
+                    <td>asep</td>
+                    <td><input type="radio" name="attendance1" value="Hadir"></td>
+                    <td><input type="radio" name="attendance1" value="Tanpa Ket"></td>
+                    <td><input type="radio" name="attendance1" value="Izin"></td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+            <div class="table">
+                <div class="table-header">Kelengkapan Atribut</div>
+                <table>
+                <thead>
+                    <tr>
+                    <th>Kaos Kaki</th>
+                    <th>Sabuk</th>
+                    <th>Seragam</th>
+                    <th>Songkok</th>
+                    <th>Sepatu</th>
+                    <th>Hasduk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td><input type="checkbox" name="kaos_kaki"></td>
+                    <td><input type="checkbox" name="sabuk"></td>
+                    <td><input type="checkbox" name="seragam"></td>
+                    <td><input type="checkbox" name="songkok"></td>
+                    <td><input type="checkbox" name="sepatu"></td>
+                    <td><input type="checkbox" name="hasduk"></td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
                         </tbody>
                     </table>
                 </div>
             </div>
+        </div>
+        <div class="form-controls">
+            <a href="datarekap.html" class="back-btn">Kembali</a>
+            <a href="submit.html" class="submit-btn" onclick="submitForm(event)">Submit</a>
         </div>
     </div>
 
@@ -222,7 +327,9 @@
         // Fungsi untuk mengganti kelas yang dipilih
         function changeClass(className) {
             document.getElementById('current-class').innerText = className;
+            window.location.href = className.toLowerCase().replace(/ /g, '-') + '.html';
         }
     </script>
 </body>
+
 </html>

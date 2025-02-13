@@ -75,24 +75,66 @@
             <h2>Tambah Siswa</h2>
             <form>
                 <label for="nama">Nama:</label>
-                <input type="text" id="nama" name="nama" required>
+                <input type="text" id="nama" name="nama" placeholder="Masukkan nama" required>
 
                 <label for="kelas">Kelas:</label>
-                <input type="text" id="kelas" name="kelas" required>
+                <input type="text" id="kelas" name="kelas" placeholder="Masukkan kelas" required>
 
                 <label for="ttl">TTL:</label>
-                <input type="text" id="ttl" name="ttl" required>
+                <input type="text" id="ttl" name="ttl" placeholder="Masukkan TTL" required>
 
                 <label for="alamat">Alamat:</label>
-                <input type="text" id="alamat" name="alamat" required>
+                <input type="text" id="alamat" name="alamat" placeholder="Masukkan Alamat" required>
 
                 <div class="btn-container">
-                      <button type="button" class="btn">Batal</button>
-                    <button type="submit" class="btn">Simpan</button>
-                  
+                    <button type="button" class="btn" onclick="window.location.href='pengaturan.html'">Batal</button>
+                    <button type="button" class="btn" onclick="tambahsiswa()">Simpan</button>
                 </div>
             </form>
         </div>
     </div>
+    <script>
+        function tambahsiswa() {
+            // Ambil nilai dari setiap input field
+            const nama = document.getElementById("nama").value.trim();
+            const kelas = document.getElementById("kelas").value.trim();
+            const ttl = document.getElementById("ttl").value.trim();
+            const alamat = document.getElementById("alamat").value.trim();
+
+            // Pastikan semua field telah diisi
+            if (nama && kelas && ttl && alamat) {
+                // Buat konten notifikasi dengan pesan dan data
+                const notificationContent = `
+                    <p>User berhasil ditambahkan!</p>
+                    <p><strong>Nama:</strong> ${nama}</p>
+                    <p><strong>Kelas:</strong> ${kelas}</p>
+                    <p><strong>TTL:</strong> ${ttl}</p>
+                    <p><strong>Alamat:</strong> ${alamat}</p>
+                `;
+                // Tampilkan notifikasi di depan form
+                const notif = document.createElement('div');
+                notif.id = "notification";
+                notif.innerHTML = notificationContent;
+                notif.style.display = "block";
+                notif.style.position = "absolute";
+                notif.style.backgroundColor = "#fff";
+                notif.style.padding = "10px";
+                notif.style.borderRadius = "5px";
+                notif.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.1)";
+                document.body.appendChild(notif);
+
+                // Sembunyikan notifikasi setelah 3 detik
+                setTimeout(function() {
+                    notif.style.display = "none";
+                    document.body.removeChild(notif);
+                }, 3000);
+
+                // Reset form setelah berhasil menyimpan
+                document.querySelector("form").reset();
+            } else {
+                alert("Harap isi semua field!");
+            }
+        }
+    </script>
 </body>
 </html>
